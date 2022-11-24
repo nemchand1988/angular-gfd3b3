@@ -1,27 +1,27 @@
 import { createReducer, on } from '@ngrx/store';
-import * as PostsActions from './actions';
+import * as UsersActions from './actions';
 
-export interface Post {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
+export interface User {
+  first_name: string;
+  gender: string;
+  email: string;
+  date_of_birth: string;
 }
 
 export interface PostState {
-  posts: Post[];
+  users: User[];
 }
 
 const initialState: PostState = {
-  posts: [],
+  users: [],
 };
 
 export const postReducer = createReducer(
   initialState,
-  on(PostsActions.loadPostsAction, (state) => ({ ...state })),
-  on(PostsActions.loadPostsSuccessAction, (state) => ({ ...state })),
-  on(PostsActions.loadPostsFailedAction, (state) => ({ ...state })),
-  on(PostsActions.setPostsAction, (state, { payload }) => ({
-    posts: [...payload.posts],
+  on(UsersActions.loadUsersAction, (state) => ({ ...state })),
+  on(UsersActions.loadUsersSuccessAction, (state) => ({ ...state })),
+  on(UsersActions.loadUsersFailedAction, (state) => ({ ...state })),
+  on(UsersActions.setUsersAction, (state, { payload }) => ({
+    users: [...payload.users],
   }))
 );

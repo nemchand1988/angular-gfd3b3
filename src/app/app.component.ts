@@ -1,7 +1,7 @@
 import { Component, VERSION } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Post, PostState } from './store';
+import { User, PostState } from './store';
 import { loadPostsAction } from './store/actions';
 
 @Component({
@@ -13,7 +13,7 @@ export class AppComponent {
   posts$: Observable<any>;
 
   constructor(private store: Store<PostState>) {
-    this.posts$ = this.store.select('posts');
-    this.store.dispatch(loadPostsAction());
+    this.posts$ = this.store.select('users');
+    this.store.dispatch(loadUsersAction());
   }
 }

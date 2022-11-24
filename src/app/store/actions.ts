@@ -1,22 +1,22 @@
 import { createAction, props } from '@ngrx/store';
-import { Post } from './reducers';
+import { User } from './reducers';
 
-const loadPosts = '[POSTS ACTION] load posts';
-const loadPostsSuccess = '[POSTS ACTION] load posts success';
-const loadPostsFailed = '[POSTS ACTION] load posts fialed';
+const loadUsers = '[USERS ACTION] load users';
+const loadUsersSuccess = '[USERS ACTION] load users success';
+const loadUsersFailed = '[USERS ACTION] load users fialed';
 
-const setPosts = '[POSTS ACTION] set posts';
+const setUsers = '[USERS ACTION] set posts';
 
-export const loadPostsAction = createAction(loadPosts);
+export const loadUsersAction = createAction(loadUsers);
 
-export const loadPostsSuccessAction = createAction(loadPostsSuccess);
-export const loadPostsFailedAction = createAction(loadPostsFailed);
+export const loadUsersSuccessAction = createAction(loadUsersSuccess);
+export const loadUsersFailedAction = createAction(loadUsersFailed);
 
-export const setPostsAction = createAction(
-  setPosts,
+export const setUsersAction = createAction(
+  setUsers,
   props<{
     payload: {
-      posts: Post[];
+      users: User[];
     };
   }>()
 );

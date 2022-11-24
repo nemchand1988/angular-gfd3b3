@@ -10,15 +10,15 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { ApiService } from './api.service';
-import { postReducer, PostsEffects } from './store';
+import { userReducer, UsersEffects } from './store';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    StoreModule.forRoot({ posts: postReducer }),
-    EffectsModule.forRoot([PostsEffects]),
+    StoreModule.forRoot({ posts: userReducer }),
+    EffectsModule.forRoot([UsersEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: true,

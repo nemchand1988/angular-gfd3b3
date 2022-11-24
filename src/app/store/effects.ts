@@ -5,25 +5,25 @@ import { catchError, map, mergeMap } from 'rxjs/operators';
 import { ApiService } from '../api.service';
 import { of } from 'rxjs';
 import {
-  loadPostsAction,
-  loadPostsSuccessAction,
-  loadPostsFailedAction,
-  setPostsAction,
+  loadUsersAction,
+  loadUsersSuccessAction,
+  loadUsersFailedAction,
+  setUsersAction,
 } from './actions';
 
 @Injectable()
 export class PostsEffects {
   public loadUnitList$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(loadPostsAction),
+      ofType(loadUsersAction),
       mergeMap(() => {
-        return this.postsApiService.getData().pipe(
+        return this.ApiService.getData().pipe(
           map((response: any[]) => {
             console.log(response);
-            loadPostsSuccessAction();
-            return setPostsAction({ payload: { posts: response.first_name } });
+            loadUsersSuccessAction();
+            return setUsersAction({ payload: { users: response } });
           }),
-          catchError(() => of(loadPostsFailedAction()))
+          catchError(() => of(loadUsersFailedAction()))
         );
       })
     );
@@ -31,6 +31,6 @@ export class PostsEffects {
 
   constructor(
     private actions$: Actions<Action>,
-    private postsApiService: ApiService
+    private ApiService: ApiService
   ) {}
 }
